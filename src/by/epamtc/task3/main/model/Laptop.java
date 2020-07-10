@@ -1,5 +1,7 @@
 package by.epamtc.task3.main.model;
 
+import java.util.Objects;
+
 public class Laptop {
     String baterryCapacity;
     String os;
@@ -27,5 +29,23 @@ public class Laptop {
                 ", cpu='" + cpu + '\'' +
                 ", displayInchs='" + displayInchs + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Laptop laptop = (Laptop) o;
+        return Objects.equals(baterryCapacity, laptop.baterryCapacity) &&
+                Objects.equals(os, laptop.os) &&
+                Objects.equals(memoryRom, laptop.memoryRom) &&
+                Objects.equals(systemMemory, laptop.systemMemory) &&
+                Objects.equals(cpu, laptop.cpu) &&
+                Objects.equals(displayInchs, laptop.displayInchs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baterryCapacity, os, memoryRom, systemMemory, cpu, displayInchs);
     }
 }
